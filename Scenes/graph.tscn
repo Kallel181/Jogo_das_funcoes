@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6sbm04nyf3en"]
+
+[ext_resource type="Script" path="res://Scenes/graph.gd" id="1_lq383"]
+[ext_resource type="Script" path="res://Scenes/Camera_Target.gd" id="2_akjp1"]
+
+[node name="Graph" type="Node2D"]
+script = ExtResource("1_lq383")
+
+[node name="Camera_Target" type="Node2D" parent="."]
+script = ExtResource("2_akjp1")
+
+[node name="Camera2D" type="Camera2D" parent="Camera_Target"]
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="Line" type="Node2D" parent="."]
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Labels" type="Node2D" parent="."]
+
+[node name="x" type="Node2D" parent="Labels"]
+
+[node name="y" type="Node2D" parent="Labels"]

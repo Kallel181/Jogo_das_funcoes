@@ -1,0 +1,230 @@
+[gd_scene load_steps=5 format=3 uid="uid://chr1qlgnwa101"]
+
+[ext_resource type="Script" path="res://Scenes/UI.gd" id="1_lhurv"]
+[ext_resource type="PackedScene" uid="uid://c6sbm04nyf3en" path="res://Scenes/graph.tscn" id="2_h8xkt"]
+[ext_resource type="Script" path="res://Scenes/AddDotMenu.gd" id="3_g8qgj"]
+[ext_resource type="Script" path="res://Scenes/Feedback.gd" id="4_k2jyo"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lhurv")
+
+[node name="MainUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainDiv" type="VBoxContainer" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/MainDiv"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainUI/MainDiv/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="TabBar" type="TabBar" parent="MainUI/MainDiv/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tab_count = 2
+tab_0/title = "Seu grafico"
+tab_1/title = "Grafico do Oponente"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/MainDiv/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="Question" type="Button" parent="MainUI/MainDiv/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Gerar Pergunta"
+
+[node name="HSeparator" type="HSeparator" parent="MainUI/MainDiv"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainUI/MainDiv"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Player_Graph" type="SubViewportContainer" parent="MainUI/MainDiv/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MainUI/MainDiv/MarginContainer2/Player_Graph"]
+handle_input_locally = false
+size = Vector2i(1132, 575)
+render_target_update_mode = 4
+
+[node name="Player" parent="MainUI/MainDiv/MarginContainer2/Player_Graph/SubViewport" instance=ExtResource("2_h8xkt")]
+unique_name_in_owner = true
+is_active = true
+
+[node name="Enemy_Graph" type="SubViewportContainer" parent="MainUI/MainDiv/MarginContainer2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MainUI/MainDiv/MarginContainer2/Enemy_Graph"]
+handle_input_locally = false
+size = Vector2i(1132, 575)
+render_target_update_mode = 0
+
+[node name="Enemy" parent="MainUI/MainDiv/MarginContainer2/Enemy_Graph/SubViewport" instance=ExtResource("2_h8xkt")]
+unique_name_in_owner = true
+
+[node name="ModifyMenu" type="Control" parent="MainUI/MainDiv/MarginContainer2"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonSelect" type="VBoxContainer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="AddPoint" type="Button" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/ButtonSelect"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Adicionar Ponto"
+
+[node name="AddLine" type="Button" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/ButtonSelect"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Adicionar Reta"
+
+[node name="ClearPoint" type="Button" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/ButtonSelect"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Limpar ponto"
+
+[node name="ClearAllPoints" type="Button" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/ButtonSelect"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Limpar todos os pontos"
+
+[node name="AddDotMenu" type="VBoxContainer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("3_g8qgj")
+
+[node name="LineAddDot" type="HBoxContainer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/LineAddDot"]
+layout_mode = 2
+text = "("
+
+[node name="Dot_x" type="LineEdit" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "x"
+alignment = 1
+
+[node name="Label2" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/LineAddDot"]
+layout_mode = 2
+text = ","
+
+[node name="Dot_y" type="LineEdit" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "y"
+alignment = 1
+
+[node name="Label3" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/LineAddDot"]
+layout_mode = 2
+text = ")"
+
+[node name="AddDot" type="Button" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Adicionar"
+
+[node name="Feedback" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu"]
+layout_mode = 2
+horizontal_alignment = 1
+script = ExtResource("4_k2jyo")
+
+[node name="Timer" type="Timer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/Feedback"]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="GameConfigMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GameConfigMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameConfigMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="GameConfigMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Novo Jogo"
+
+[connection signal="tab_changed" from="MainUI/MainDiv/HBoxContainer/MarginContainer2/TabBar" to="." method="_on_tab_bar_tab_changed"]
+[connection signal="pressed" from="MainUI/MainDiv/HBoxContainer/MarginContainer/Question" to="." method="_on_question_pressed"]
+[connection signal="pressed" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/ButtonSelect/AddPoint" to="." method="_on_add_point_pressed"]
+[connection signal="pressed" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/ButtonSelect/AddLine" to="." method="_on_add_line_pressed"]
+[connection signal="pressed" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/ButtonSelect/ClearPoint" to="." method="_on_clear_point_pressed"]
+[connection signal="pressed" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/ButtonSelect/ClearAllPoints" to="." method="_on_clear_all_points_pressed"]
+[connection signal="pressed" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/LineAddDot/AddDot" to="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu" method="_on_add_dot_pressed"]
+[connection signal="timeout" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/Feedback/Timer" to="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/Feedback" method="_on_timer_timeout"]
