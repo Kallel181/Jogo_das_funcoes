@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://chr1qlgnwa101"]
+[gd_scene load_steps=7 format=3 uid="uid://chr1qlgnwa101"]
 
 [ext_resource type="Script" path="res://Scenes/UI.gd" id="1_lhurv"]
 [ext_resource type="PackedScene" uid="uid://c6sbm04nyf3en" path="res://Scenes/graph.tscn" id="2_h8xkt"]
 [ext_resource type="Script" path="res://Scenes/AddDotMenu.gd" id="3_g8qgj"]
 [ext_resource type="Script" path="res://Scenes/Feedback.gd" id="4_k2jyo"]
+[ext_resource type="Script" path="res://Scenes/AddLineMenu.gd" id="5_fui6i"]
+[ext_resource type="Script" path="res://Scenes/RemoveDotMenu.gd" id="6_m31of"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -196,6 +198,128 @@ script = ExtResource("4_k2jyo")
 unique_name_in_owner = true
 wait_time = 3.0
 
+[node name="AddLineMenu" type="VBoxContainer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("5_fui6i")
+
+[node name="LineAddDot" type="HBoxContainer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+layout_mode = 2
+text = "("
+
+[node name="StartX" type="LineEdit" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "x"
+alignment = 1
+
+[node name="Label2" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+layout_mode = 2
+text = ","
+
+[node name="StartY" type="LineEdit" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "y"
+alignment = 1
+
+[node name="Label3" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+layout_mode = 2
+text = ")"
+
+[node name="Label7" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+layout_mode = 2
+text = "->"
+
+[node name="Label4" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+layout_mode = 2
+text = "("
+
+[node name="EndX" type="LineEdit" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "x"
+alignment = 1
+
+[node name="Label5" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+layout_mode = 2
+text = ","
+
+[node name="EndY" type="LineEdit" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "y"
+alignment = 1
+
+[node name="Label6" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+layout_mode = 2
+text = ")"
+
+[node name="AddLineButton" type="Button" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Adicionar"
+
+[node name="Feedback" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu"]
+layout_mode = 2
+horizontal_alignment = 1
+script = ExtResource("4_k2jyo")
+
+[node name="Timer" type="Timer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/Feedback"]
+wait_time = 3.0
+
+[node name="RemoveDotMenu" type="VBoxContainer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("6_m31of")
+
+[node name="LineAddDot" type="HBoxContainer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/LineAddDot"]
+layout_mode = 2
+text = "("
+
+[node name="Dot_x_rm" type="LineEdit" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "x"
+alignment = 1
+
+[node name="Label2" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/LineAddDot"]
+layout_mode = 2
+text = ","
+
+[node name="Dot_y_rm" type="LineEdit" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "y"
+alignment = 1
+
+[node name="Label3" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/LineAddDot"]
+layout_mode = 2
+text = ")"
+
+[node name="RemoveDot" type="Button" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/LineAddDot"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Adicionar"
+
+[node name="Feedback" type="Label" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu"]
+layout_mode = 2
+horizontal_alignment = 1
+script = ExtResource("4_k2jyo")
+
+[node name="Timer" type="Timer" parent="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/Feedback"]
+wait_time = 3.0
+
 [node name="GameConfigMenu" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -228,3 +352,7 @@ text = "Novo Jogo"
 [connection signal="pressed" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/ButtonSelect/ClearAllPoints" to="." method="_on_clear_all_points_pressed"]
 [connection signal="pressed" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/LineAddDot/AddDot" to="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu" method="_on_add_dot_pressed"]
 [connection signal="timeout" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/Feedback/Timer" to="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddDotMenu/Feedback" method="_on_timer_timeout"]
+[connection signal="pressed" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/LineAddDot/AddLineButton" to="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu" method="_on_add_line_button_pressed"]
+[connection signal="timeout" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/Feedback/Timer" to="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/AddLineMenu/Feedback" method="_on_timer_timeout"]
+[connection signal="pressed" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/LineAddDot/RemoveDot" to="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu" method="_on_remove_dot_pressed"]
+[connection signal="timeout" from="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/Feedback/Timer" to="MainUI/MainDiv/MarginContainer2/ModifyMenu/CenterContainer/RemoveDotMenu/Feedback" method="_on_timer_timeout"]

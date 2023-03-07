@@ -6,7 +6,6 @@ extends Node2D
 @export var max_x:int = 15 
 @export var max_y:int = 15
 
-
 func _draw() -> void:
 	draw_bg_graph()
 	create_labels_axis()
@@ -25,14 +24,16 @@ func add_point(pos:Vector2) -> void:
 func add_line(pos1:Vector2,pos2:Vector2) -> void:
 	remove_line()
 	var line:Line2D = Line2D.new()
-	line.add_point(Vector2(pos1.x,pos1.y*-1))
-	line.add_point(Vector2(pos2.x,pos2.y*-1))
+	line.add_point(Vector2(pos1.x*step,pos1.y*-1*step))
+	line.add_point(Vector2(pos2.x*step,pos2.y*-1*step))
 	line.width = 5
 	line.default_color = Color.hex(0x1f90ea)
+	$Line.add_child(line)
 
 func remove_point(pos:Vector2) -> void:
 	var point: Sprite2D = $Points.get_node(str(pos.x)+"_"+str(pos.y*-1))
-	point.queue_free()
+	if point != null:
+		point.queue_free()
 
 func remove_line() -> void:
 	for i in $Line.get_children():
@@ -72,7 +73,6 @@ func create_labels_axis() -> void:
 			label.position -= Vector2(label.size.x+3,label.size.y)
 			
 			$Labels/y.add_child(label)
-
 
 
 ## Essa função cria o grafico no plano 

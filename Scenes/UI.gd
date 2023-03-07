@@ -12,17 +12,9 @@ var questions:Array = [
 #======================================== Built In ========================================
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("mouse_2"):
-		%ButtonSelect.visible = not %ButtonSelect.visible
-		%AddPoint.disabled = not %AddPoint.disabled
-		%AddLine.disabled = not %AddLine.disabled
-		%ClearPoint.disabled = not %ClearPoint.disabled
-		%ClearAllPoints.disabled = not %ClearAllPoints.disabled
-
-
-
-
-
-
+		revoke_disable_visibility()
+	
+	
 #======================================== Signals ========================================
 #change tab
 func _on_tab_bar_tab_changed(tab: int) -> void:
@@ -37,7 +29,6 @@ func _on_question_pressed() -> void:
 	pass # Replace with function body.
 
 
-
 func _on_add_point_pressed() -> void:
 	revoke_disable_visibility()
 	%AddDotMenu.visible = not %AddDotMenu.visible
@@ -46,16 +37,20 @@ func _on_add_point_pressed() -> void:
 
 func _on_add_line_pressed() -> void:
 	revoke_disable_visibility()
-
+	%AddLineMenu.visible = not %AddLineMenu.visible
+	%AddLineButton.disabled = not %AddLineButton.disabled
 
 func _on_clear_point_pressed() -> void:
 	revoke_disable_visibility()
-
+	%RemoveDot.disabled = not %RemoveDot.disabled
+	%RemoveDotMenu.visible = not %RemoveDotMenu.visible
 
 func _on_clear_all_points_pressed() -> void:
 	revoke_disable_visibility()
-
-
+	if get_active_bar() == 0:
+		%Player.remove_all_points()
+	else:
+		%Enemy.remove_all_points()
 
 func get_active_bar() -> int:
 	return %TabBar.current_tab

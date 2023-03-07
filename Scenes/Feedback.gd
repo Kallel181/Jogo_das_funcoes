@@ -1,5 +1,7 @@
 extends Label
 
+
+
 func add_feedback(line:String):
 	text = line
 	%Timer.start()

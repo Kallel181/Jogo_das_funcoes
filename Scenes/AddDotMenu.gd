@@ -1,6 +1,5 @@
 extends VBoxContainer
 
-
 func _on_add_dot_pressed() -> void:
 	if %Dot_x.text == "" or %Dot_y.text == "":
 		$Feedback.add_feedback("o(s) campos não podem estar vazios")
@@ -22,7 +21,6 @@ func _on_add_dot_pressed() -> void:
 		%Enemy.add_point(Vector2(float(%Dot_x.text),float(%Dot_y.text)))
 		%AddDotMenu.visible = not %AddDotMenu.visible
 		%AddDot.disabled = not %AddDot.disabled
-	
 	
 func get_active_bar() -> int:
 	return %TabBar.current_tab
